@@ -38,7 +38,7 @@ SET_NVIDIA_ENV="${SET_NVIDIA_ENV:-1}"              # 0 = skip NVIDIA env vars sn
 APPLY_MODESET_PARAM="${APPLY_MODESET_PARAM:-1}"    # 0 = don't touch bootloader cmdline
 INSTALL_PORTALS="${INSTALL_PORTALS:-1}"            # 0 = skip xdg-desktop-portal stack
 INSTALL_AUR="${INSTALL_AUR:-1}"                    # 0 = skip AUR installs (protonup-qt)
-HYPR_DROPIN_OVERWRITE="${HYPR_DROPIN_OVERWRITE:-1}"# 0 = do not overwrite existing 99-gaming.conf
+HYPR_DROPIN_OVERWRITE="${HYPR_DROPIN_OVERWRITE:-1}" # 0 = do not overwrite existing 99-gaming.conf
 BACKUP_CONFIG="${BACKUP_CONFIG:-1}"                # 0 = skip backup tarball creation
 
 # -----------------------------
