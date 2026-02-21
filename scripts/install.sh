@@ -95,7 +95,6 @@ BASE_PKGS=(
   vulkan-icd-loader
   lib32-vulkan-icd-loader
   pipewire pipewire-alsa pipewire-pulse wireplumber
-  steam-devices
 )
 
 NVIDIA_PKGS=(
@@ -113,6 +112,13 @@ AUR_PKGS=(protonup-qt)
 # -----------------------------
 log "Updating system + installing core gaming packages..."
 sudo pacman -Syu --needed --noconfirm "${BASE_PKGS[@]}"
+log "Installing Steam controller udev rules (optional)..."
+if pacman -Si steam-devices >/dev/null 2>&1; then
+  sudo pacman -S --needed --noconfirm steam-devices
+else
+  warn "Package 'steam-devices' not found in enabled repos. Skipping."
+  warn "If you have controller issues, install equivalent udev rules package for your distro or add Steam udev rules manually."
+fi
 
 if [[ "$INSTALL_PORTALS" == "1" ]]; then
   log "Installing xdg-desktop-portal stack (Wayland integration)..."
