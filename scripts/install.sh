@@ -318,7 +318,7 @@ ensure_nvidia_modeset
 if [[ "$INSTALL_AUR" == "1" ]]; then
   if need_cmd yay; then
     log "Installing AUR packages with yay: ${AUR_PKGS[*]}"
-    yay -S --needed --noconfirm "${AUR_PKGS[@]}"
+    yay -S --needed --noconfirm --batchinstall --cleanafter "${AUR_PKGS[@]}"  
   else
     warn "yay not found. Install yay, then run:"
     warn "  yay -S --needed protonup-qt"
