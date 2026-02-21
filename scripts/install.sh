@@ -105,7 +105,11 @@ NVIDIA_PKGS=(
 
 LTS_PKGS=(linux-lts linux-lts-headers)
 
-AUR_PKGS=(protonup-qt)
+AUR_PKGS=(
+  protonup-qt
+  proton-ge-custom
+  protontricks
+)
 
 # -----------------------------
 # Install packages
