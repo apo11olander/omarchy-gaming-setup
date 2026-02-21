@@ -127,7 +127,16 @@ else
 fi
 
 log "Installing NVIDIA driver stack (DKMS)..."
-sudo pacman -S --needed --noconfirm "${NVIDIA_PKGS[@]}"
+
+# Respect existing NVIDIA kernel module choice to avoid conflicts:
+# - If nvidia-open-dkms is installed, do NOT install nvidia-dkms.
+# - If neither is installed, default to nvidia-dkms.
+if pacman -Qq nvidia-open-dkms >/dev/null 2>&1; then
+  warn "Detected nvidia-open-dkms already installed. Skipping nvidia-dkms to avoid conflicts."
+  sudo pacman -S --needed --noconfirm nvidia-utils lib32-nvidia-utils
+else
+  sudo pacman -S --needed --noconfirm "${NVIDIA_PKGS[@]}"
+fi
 
 log "Ensuring NVIDIA DRM modeset via modprobe.d as a fallback..."
 sudo mkdir -p /etc/modprobe.d
