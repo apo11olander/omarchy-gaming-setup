@@ -1,0 +1,18 @@
+# Template: Hyprland gaming drop-in
+# Written by scripts/install.sh to: ~/.config/hypr/conf.d/99-gaming.conf
+
+# NVIDIA + Wayland (GBM)
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = LIBVA_DRIVER_NAME,nvidia
+
+# If cursor corruption, uncomment:
+# env = WLR_NO_HARDWARE_CURSORS,1
+
+# VRR (Adaptive Sync) - disable if flicker
+misc {
+  vrr = 1
+}
+
+# Example gamescope usage (Steam launch options):
+# gamescope -f -r 144 --adaptive-sync -- %command%
