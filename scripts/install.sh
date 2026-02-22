@@ -82,6 +82,31 @@ backup_hypr() {
 backup_hypr
 
 # -----------------------------
+# Steam: desktop entry to launch in Big Picture (Gamepad UI)
+# -----------------------------
+write_steam_big_picture_entry() {
+  local app_dir="$HOME/.local/share/applications"
+  local desktop_file="$app_dir/steam-bp.desktop"
+
+  mkdir -p "$app_dir"
+
+  cat > "$desktop_file" <<'EOF'
+[Desktop Entry]
+Name=Steam (Big Picture)
+Comment=Steam Client in Big Picture / Gamepad UI
+Type=Application
+Categories=Game;
+Terminal=false
+Icon=steam
+Exec=steam -gamepadui %U
+MimeType=x-scheme-handler/steam;
+EOF
+
+  log "Wrote Steam launcher: $desktop_file"
+}
+write_steam_big_picture_entry
+
+# -----------------------------
 # Packages
 # -----------------------------
 BASE_PKGS=(
